@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jitin Kumar - CS Student Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .glass{backdrop-filter:blur(10px);background:rgba(255,255,255,0.1)}
+        .btn-primary{background:linear-gradient(135deg,#667eea,#764ba2);transition:all 0.3s}
+        .btn-primary:hover{transform:translateY(-2px);box-shadow:0 20px 40px rgba(102,126,234,0.4)}
+        .btn-secondary{background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2)}
+        .gradient-bg{background:linear-gradient(135deg,#667eea,#764ba2,#f093fb,#f5576c)}
+        .navbar-blur{backdrop-filter:blur(10px);background:rgba(255,255,255,0.9)}
+        .dark .navbar-blur{background:rgba(17,24,39,0.9)}
+        .progress-bar{background:linear-gradient(90deg,#667eea,#764ba2)}
+        .tech-tag{background:rgba(102,126,234,0.1);color:#667eea;border:1px solid rgba(102,126,234,0.2)}
+        .dark .tech-tag{background:rgba(102,126,234,0.2)}
+        .animate-float{animation:float 6s ease-in-out infinite}
+        .animate-fadeInUp{animation:fadeInUp 1s ease-out}
+        .typing{animation:typing 3s steps(30,end)}
+        @keyframes float{0%,100%{transform:translateY(0px)}50%{transform:translateY(-20px)}}
+        @keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+        @keyframes typing{from{width:0}to{width:100%}}
+        .skill-card,.project-card{transition:transform 0.3s,box-shadow 0.3s}
+        .skill-card:hover,.project-card:hover{transform:translateY(-5px);box-shadow:0 20px 40px rgba(0,0,0,0.1)}
+        .profile-image{
+            width: 250px;
+            height:250px;
+            background:linear-gradient(135deg,#667eea,#b245a7);
+            border-radius: 50%;
+            border:2px solid rgba(255,255,255,0.3);
+            box-shadow:0 10px 20px rgba(0,0,0,0.1);
+            transition:transform 0.3s,box-shadow 0.3s;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            overflow:hidden;
+            object-fit:cover;
+            background-size:cover;
+            }
+        .profile-image:hover{
+            transform: scale(1.05);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+        }
+        @keyframes float{0%,100%{transform:translateY(0px)}50%{transform:translateY(-20px)}}
+        @keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+        @keyframes typing{from{width:0}to{width:100%}}
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="n2.js"></script>
+</head>
+<body class="text-gray-800 transition-all duration-300 bg-gray-50 dark:bg-gray-900 dark:text-gray-200">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 z-50 w-full bg-purple-500 shadow-lg navbar-blur dark:bg-purple-400">
+        <div class="container px-6 py-4 mx-auto">
+            <div class="flex items-center justify-between">
+  
+                <div class="hidden space-x-8 md:flex">
+                    <a href="#home" class="font-medium transition-colors nav-link hover:text-blue-600">Home</a>
+                    <a href="#about" class="font-medium transition-colors nav-link hover:text-blue-600">About</a>
+                    <a href="#skills" class="font-medium transition-colors nav-link hover:text-blue-600">Skills</a>
+                    <a href="#projects" class="font-medium transition-colors nav-link hover:text-blue-600">Projects</a>
+                    
+                </div>
+            </div>
+    </nav>
+
+<!--
+            <div id="mobileMenu" class="hidden pb-4 mt-4 space-y-2 md:hidden">
+                <a href="#home" class="block py-2 transition-colors hover:text-blue-600">Home</a>
+                <a href="#about" class="block py-2 transition-colors hover:text-blue-600">About</a>
+                <a href="#skills" class="block py-2 transition-colors hover:text-blue-600">Skills</a>
+                <a href="#projects" class="block py-2 transition-colors hover:text-blue-600">Projects</a>
+             
+            </div>
+         </div> --> 
+     
+    <!-- Home Section -->
+    <section id="home" class="relative flex items-center justify-center min-h-screen overflow-hidden gradient-bg">
+        <div class="absolute inset-0 opacity-20">
+            <div class="absolute w-64 h-64 bg-white rounded-full top-20 left-10 animate-float"></div>
+            <div class="absolute w-48 h-48 bg-white rounded-full bottom-20 right-10 animate-float" style="animation-delay:-2s"></div>
+            <div class="absolute w-32 h-32 bg-white rounded-full top-1/2 left-1/3 animate-float" style="animation-delay:-4s"></div>
+            <div class="absolute w-20 h-20 bg-white rounded-full top-1/4 right-1/4 animate-float" style="animation-delay:-3s"></div>
+        </div>
+         <div class="text-center animate-fadeInUp">
+            <!-- Profile Photo Section -->
+            <div class="flex justify-center mb-2">
+                <img src="profile.png" alt="Jitin Kumar" class="object-cover profile-image">
+                <!-- Fallback if no image is provided -->
+                <div class="flex items-center justify-center profile-image bg-white/20 backdrop-blur-sm" style="display: none;">
+                    <i class="text-6xl text-white fas fa-user"></i>
+                </div>
+            </div>
+        
+        <!-- <div class="z-10 px-6 text-center text-white animate-fadeInUp">
+            <div class="flex items-center justify-center w-32 h-32 mx-auto mb-6 rounded-full bg-white/20 backdrop-blur-sm">
+                <i class="text-5xl text-white fas fa-code"></i>
+            </div> -->
+            <h1 class="mb-6 text-4xl font-bold md:text-7xl">Hi, I'm <span class="text-transparent bg-gradient-to-r from-yellow-400 to-pink-400 bg-clip-text">Jitin</span></h1>
+            <p class="mb-4 text-lg md:text-2xl typing">B.Tech Computer Science Student</p>
+            <p class="max-w-2xl mx-auto mb-8 text-base md:text-lg opacity-90">Passionate about creating innovative solutions through code. Exploring the endless possibilities of technology while building a strong foundation in computer science.</p>
+            <div class="space-y-4 md:space-y-0 md:space-x-6 md:flex md:justify-center">
+                <div class="space-y-4 md:space-y-0 md:space-x-6 md:flex md:justify-center">
+                <button onclick="downloadResume()" class="inline-flex items-center px-8 py-4 font-semibold text-white rounded-full shadow-lg btn-primary">
+                    <i class="mr-2 fas fa-download"></i>Download Resume
+                </button>
+                <a href="#projects" class="inline-flex items-center px-8 py-4 font-semibold text-white transition-all duration-300 border-2 border-white rounded-full hover:bg-white hover:text-blue-600">
+                    <i class="mr-2 fas fa-rocket"></i>View My Work
+                </a>
+            </div>
+        </div>
+        
+        <div class="absolute transform -translate-x-1/2 bottom-8 left-1/2 animate-bounce">
+            <a href="#about" class="text-2xl text-white"><i class="fas fa-chevron-down"></i></a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+     <section id="about" class="relative flex items-center justify-center min-h-screen overflow-hidden gradient-bg">
+        <div class="absolute inset-0 opacity-20">
+            <div class="absolute w-64 h-64 bg-white rounded-full top-20 left-10 animate-float"></div>
+            <div class="absolute w-48 h-48 bg-white rounded-full bottom-20 right-10 animate-float" style="animation-delay:-2s"></div>
+            <div class="absolute w-32 h-32 bg-white rounded-full top-1/2 left-1/3 animate-float" style="animation-delay:-4s"></div>
+            <div class="absolute w-20 h-20 bg-white rounded-full top-1/4 right-1/4 animate-float" style="animation-delay:-3s"></div>
+        </div>
+        
+        <div class="z-10 px-6 text-center text-white animate-fadeInUp">
+            <div class="flex items-center justify-center w-32 h-32 mx-auto mb-6 rounded-full bg-white/20 backdrop-blur-sm">
+                <i class="text-5xl text-white fas fa-code"></i>
+            </div>
+        <div class="container px-6 mx-auto">
+            <div class="mb-16 text-center">
+                <h2 class="mb-4 text-4xl font-bold md:text-5xl">About Me</h2>
+                <p class="max-w-3xl mx-auto text-xl text-gray-900 dark:text-gray-900">Discover my journey, passion, and aspirations in the world of computer science</p>
+            </div>
+            
+            <div class="grid items-center max-w-6xl gap-12 mx-auto lg:grid-cols-2">
+                <div class="space-y-6">
+                    <div class="prose prose-lg dark:prose-invert">
+                        <p class="text-lg leading-relaxed">I'm a passionate B.Tech Computer Science student with an insatiable curiosity for technology and its potential to solve real-world problems. My journey began with a simple "Hello, World!" and has evolved into a deep commitment to mastering the art and science of programming.</p>
+                        <p class="text-lg leading-relaxed">From building desktop applications with Python and Tkinter to crafting responsive web interfaces, I love the process of transforming ideas into functional, elegant solutions. Every line of code I write is a step toward becoming a well-rounded developer .</p>
+                        <p class="text-lg leading-relaxed">My goal is to contribute meaningfully to the tech industry while continuously learning and growing. I believe in the power of collaboration, clean code, and user-centered design.</p>
+                    </div>
+                    
+                    <div class="flex flex-wrap gap-4 pt-6">
+                        <a href="https://www.linkedin.com/in/jitin-kumar-63b284320?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="inline-flex items-center px-6 py-3 text-white bg-blue-600 rounded-lg social-link hover:bg-blue-700">
+                            <i class="mr-2 fab fa-linkedin"></i> LinkedIn
+                        </a>
+                        <a href="https://leetcode.com/u/____jitin_2102____/" target="_blank" class="inline-flex items-center px-6 py-3 text-white bg-orange-600 rounded-lg social-link hover:bg-orange-700">
+                            <i class="mr-2 fab fa-leetcode"></i> LeetCode
+                        </a>
+                        <a href="https://github.com/Jitin2102" target="_blank" class="inline-flex items-center px-6 py-3 text-white bg-gray-800 rounded-lg social-link dark:bg-gray-700 hover:bg-gray-900 dark:hover:bg-gray-600">
+                            <i class="mr-2 fab fa-github"></i> GitHub
+                        </a>
+                        <a href="mailto:jitinkuietkanpur@gmail.com" target="_blank" class="inline-flex items-center px-6 py-3 text-white bg-red-600 rounded-lg social-link hover:bg-red-700">
+                            <i class="mr-2 fas fa-envelope"></i> Email
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="space-y-6">
+                    <div class="p-8 glass rounded-2xl">
+                        <h3 class="mb-6 text-2xl font-bold text-center">Education Journey</h3>
+                        <div class="space-y-6">
+                            <div class="relative pl-6 border-l-4 border-blue-600">
+                                <div class="absolute top-0 w-4 h-4 bg-blue-600 rounded-full -left-2"></div>
+                                <h4 class="text-xl font-semibold text-blue-600">B.Tech Computer Science</h4>
+                                <p class="text-sm font-medium text-gray-500 dark:text-gray-900">University Institute of Engineering and Technology under CSJMU Kanpur</p>
+                                <p class="text-sm text-gray-400 dark:text-gray-900">2024-2028</p>
+                                <p class="text-sm text-gray-500 dark:text-gray-900">Current CGPA: 8.51/10</p>
+                                <p class="text-sm text-gray-400 dark:text-gray-900">Relevant Coursework: Data Structures, OOP</p>
+                            </div>
+                            <div class="relative pl-6 border-l-4 border-green-600">
+                                <div class="absolute top-0 w-4 h-4 text-gray-500 rounded-full dark:text-gray-900 -left-2"></div>
+                                <h4 class="text-xl font-semibold text-green-600">Higher Secondary Education</h4>
+                                <p class="font-medium text-gray-400 dark:text-gray-900">Sardar Singh Convent Inter College Mahmudabad Sitapur</p>
+                                <p class="text-sm text-gray-500 dark:text-gray-900">2021 - 2023</p>
+                                <p class="text-sm text-gray-500 dark:text-gray-900">Percentage: 95.20% (PCM)</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="p-8 glass rounded-2xl">
+                        <h3 class="mb-6 text-2xl font-bold text-center">Quick Stats</h3>
+                        <div class="grid grid-cols-2 gap-4 text-center">
+                            <div><div class="text-3xl font-bold text-blue-600">5+</div><div class="text-sm text-gray-600 dark:text-gray-800">Projects Completed</div></div>
+                            <div><div class="text-3xl font-bold text-green-600">100+</div><div class="text-sm text-gray-600 dark:text-gray-800">GitHub Commits</div></div>
+                            <div><div class="text-3xl font-bold text-red-600">24/7</div><div class="text-sm text-gray-600 dark:text-gray-800">Learning Mode</div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+       <section id="skills" class="relative flex items-center justify-center min-h-screen overflow-hidden gradient-bg">
+        <div class="absolute inset-0 opacity-20">
+            <div class="absolute w-64 h-64 bg-white rounded-full top-20 left-10 animate-float"></div>
+            <div class="absolute w-48 h-48 bg-white rounded-full bottom-20 right-10 animate-float" style="animation-delay:-2s"></div>
+            <div class="absolute w-32 h-32 bg-white rounded-full top-1/2 left-1/3 animate-float" style="animation-delay:-4s"></div>
+            <div class="absolute w-20 h-20 bg-white rounded-full top-1/4 right-1/4 animate-float" style="animation-delay:-3s"></div>
+        </div>
+        
+        <div class="z-10 px-6 text-center text-white animate-fadeInUp">
+            <div class="flex items-center justify-center w-32 h-32 mx-auto mb-6 rounded-full bg-white/20 backdrop-blur-sm">
+                <i class="text-5xl text-white fas fa-code"></i>
+            </div>
+        <div class="container px-6 mx-auto">
+            <div class="mb-16 text-center">
+                <h2 class="mb-4 text-4xl font-bold md:text-5xl">Skills & Technologies</h2>
+                <p class="max-w-3xl mx-auto text-xl text-gray-500 dark:text-gray-900">A comprehensive overview of my technical skills and proficiency levels</p>
+            </div>
+            
+            <div class="mx-auto max-w-7xl">
+                <div class="grid grid-cols-2 gap-6 mb-12 md:grid-cols-3 lg:grid-cols-4">
+                    <div class="p-6 text-center bg-white shadow-lg skill-card dark:bg-gray-700 rounded-xl">
+                        <div class="flex items-center justify-center w-20 h-20 mx-auto mb-4 bg-blue-100 rounded-full dark:bg-blue-900">
+                            <i class="text-2xl text-blue-600 fab fa-python"></i>
+                        </div>
+                        <h3 class="mb-2 font-semibold">Python</h3>
+                        <div class="w-full h-2 bg-gray-200 rounded-full dark:bg-gray-600">
+                            <div class="w-4/5 h-2 rounded-full progress-bar"></div>
+                        </div>
+                        <span class="block mt-1 text-sm text-gray-400">Intermediate</span>
+                    </div>
+                    
+                    <div class="p-6 text-center bg-white shadow-lg skill-card dark:bg-gray-700 rounded-xl">
+                        <div class="flex items-center justify-center w-20 h-20 mx-auto mb-4 bg-purple-100 rounded-full dark:bg-purple-900">
+                            <i class="text-2xl text-purple-600 fas fa-code"></i>
+                        </div>
+                        <h3 class="mb-2 font-semibold">C/C++</h3>
+                        <div class="w-full h-2 bg-gray-200 rounded-full dark:bg-gray-600">
+                            <div class="w-3/5 h-2 rounded-full progress-bar"></div>
+                        </div>
+                        <span class="block mt-1 text-sm text-gray-400">Intermediate</span>
+                    </div>
+                    
+                    <div class="p-6 text-center bg-white shadow-lg skill-card dark:bg-gray-700 rounded-xl">
+                        <div class="flex items-center justify-center w-20 h-20 mx-auto mb-4 bg-orange-100 rounded-full dark:bg-orange-900">
+                            <i class="text-2xl text-orange-600 fab fa-html5"></i>
+                        </div>
+                        <h3 class="mb-2 font-semibold">HTML5</h3>
+                        <div class="w-full h-2 bg-gray-200 rounded-full dark:bg-gray-600">
+                            <div class="w-4/5 h-2 rounded-full progress-bar"></div>
+                        </div>
+                        <span class="block mt-1 text-sm text-gray-400">Intermediate</span>
+                    </div>
+                    
+                    <div class="p-6 text-center bg-white shadow-lg skill-card dark:bg-gray-700 rounded-xl">
+                        <div class="flex items-center justify-center w-20 h-20 mx-auto mb-4 bg-blue-100 rounded-full dark:bg-blue-900">
+                            <i class="text-2xl text-blue-500 fab fa-css3-alt"></i>
+                        </div>
+                        <h3 class="mb-2 font-semibold">CSS3</h3>
+                        <div class="w-full h-2 bg-gray-200 rounded-full dark:bg-gray-600">
+                            <div class="w-3/4 h-2 rounded-full progress-bar"></div>
+                        </div>
+                        <span class="block mt-1 text-sm text-gray-400">Intermediate</span>
+                    </div>
+                    
+                    <div class="p-6 text-center bg-white shadow-lg skill-card dark:bg-gray-700 rounded-xl">
+                        <div class="flex items-center justify-center w-20 h-16 mx-auto mb-4 bg-yellow-100 rounded-full dark:bg-yellow-900">
+                            <i class="text-2xl text-yellow-500 fab fa-js-square"></i>
+                        </div>
+                        <h3 class="mb-2 font-semibold">JavaScript</h3>
+                        <div class="w-full h-2 bg-gray-200 rounded-full dark:bg-gray-600">
+                            <div class="w-3/5 h-2 rounded-full progress-bar"></div>
+                        </div>
+                        <span class="block mt-1 text-sm text-gray-400">Beginner</span>
+                    </div>
+                    
+                    <div class="p-6 text-center bg-white shadow-lg skill-card dark:bg-gray-700 rounded-xl">
+                        <div class="flex items-center justify-center w-20 h-20 mx-auto mb-4 bg-green-100 rounded-full dark:bg-green-900">
+                            <i class="text-2xl text-green-600 fas fa-desktop"></i>
+                        </div>
+                        <h3 class="mb-2 font-semibold">Tkinter</h3>
+                        <div class="w-full h-2 bg-gray-200 rounded-full dark:bg-gray-600">
+                            <div class="w-3/5 h-2 rounded-full progress-bar"></div>
+                        </div>
+                        <span class="block mt-1 text-sm text-gray-400">Intermediate</span>
+                    </div>
+                    
+                    <div class="p-6 text-center bg-white shadow-lg skill-card dark:bg-gray-700 rounded-xl">
+                        <div class="flex items-center justify-center w-20 h-16 mx-auto mb-4 bg-red-100 rounded-full dark:bg-red-900">
+                            <i class="text-2xl text-red-600 fab fa-git-alt"></i>
+                        </div>
+                        <h3 class="mb-2 font-semibold">Git</h3>
+                        <div class="w-full h-2 bg-gray-200 rounded-full dark:bg-gray-600">
+                            <div class="w-3/4 h-2 rounded-full progress-bar"></div>
+                        </div>
+                        <span class="block mt-1 text-sm text-gray-400">Intermediate</span>
+                    </div>
+                    
+                    <div class="p-6 text-center bg-white shadow-lg skill-card dark:bg-gray-700 rounded-xl">
+                        <div class="flex items-center justify-center w-20 h-20 mx-auto mb-4 bg-indigo-100 rounded-full dark:bg-indigo-900">
+                            <i class="text-2xl text-indigo-600 fas fa-database"></i>
+                        </div>
+                        <h3 class="mb-2 font-semibold">SQL</h3>
+                        <div class="w-full h-2 bg-gray-200 rounded-full dark:bg-gray-600">
+                            <div class="w-1/2 h-2 rounded-full progress-bar"></div>
+                        </div>
+                        <span class="block mt-1 text-sm text-gray-400">Intermediate</span>
+                    </div>
+                </div>
+                
+                <div class="grid gap-8 mb-5 ml-60 md:grid-cols-3 lg:grid-cols-4">
+                    <div class="p-6 bg-white shadow-lg dark:bg-gray-700 rounded-xl">
+                        <h3 class="mb-4 text-xl font-bold text-center text-blue-600">Frontend</h3>
+                        <ul class="space-y-2">
+                            <li class="flex items-center"><i class="mr-2 text-green-500 fas fa-check"></i> Responsive Design</li>
+                            <li class="flex items-center"><i class="mr-2 text-green-500 fas fa-check"></i> CSS Frameworks</li>
+                            <li class="flex items-center"><i class="mr-2 text-green-500 fas fa-check"></i> DOM Manipulation</li>
+                            <li class="flex items-center"><i class="mr-2 text-green-500 fas fa-check"></i> UI/UX Principles</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="p-6 bg-white shadow-lg dark:bg-gray-700 rounded-xl">
+                        <h3 class="mb-4 text-xl font-bold text-center text-green-600">Backend</h3>
+                        <ul class="space-y-2">
+                            <li class="flex items-center"><i class="mr-2 text-green-500 fas fa-check"></i> Python Programming</li>
+                            <li class="flex items-center"><i class="mr-2 text-green-500 fas fa-check"></i> Data Structures</li>
+                            <li class="flex items-center"><i class="mr-2 text-green-500 fas fa-check"></i> Algorithms</li>
+                            <li class="flex items-center"><i class="mr-2 text-green-500 fas fa-check"></i> Problem Solving</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="p-6 bg-white shadow-lg dark:bg-gray-700 rounded-xl">
+                        <h3 class="mb-4 text-xl font-bold text-center text-purple-600">Tools & Others</h3>
+                        <ul class="space-y-2">
+                            <li class="flex items-center"><i class="mr-2 text-green-500 fas fa-check"></i> Version Control</li>
+                            <li class="flex items-center"><i class="mr-2 text-green-500 fas fa-check"></i> VS Code</li>
+                            <li class="flex items-center"><i class="mr-2 text-green-500 fas fa-check"></i> Debugging</li>
+                            <li class="flex items-center"><i class="mr-2 text-green-500 fas fa-check"></i> Jupyter Lab</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+   
+       <section id="projects" class="relative flex items-center justify-center min-h-screen overflow-hidden gradient-bg">
+        <div class="absolute inset-0 opacity-20">
+            <div class="absolute w-64 h-64 bg-white rounded-full top-20 left-10 animate-float"></div>
+            <div class="absolute w-48 h-48 bg-white rounded-full bottom-20 right-10 animate-float" style="animation-delay:-2s"></div>
+            <div class="absolute w-32 h-32 bg-white rounded-full top-1/2 left-1/3 animate-float" style="animation-delay:-4s"></div>
+            <div class="absolute w-20 h-20 bg-white rounded-full top-1/4 right-1/4 animate-float" style="animation-delay:-3s"></div>
+        </div>
+        
+        <div class="z-10 px-6 text-center text-white animate-fadeInUp">
+            <div class="flex items-center justify-center w-32 h-32 mx-auto mb-6 rounded-full bg-white/20 backdrop-blur-sm">
+                <i class="text-5xl text-white fas fa-code"></i>
+            </div>
+                        <div class="container px-6 mx-auto">
+                            <div class="mb-16 text-center">
+                                <h2 class="mb-4 text-4xl font-bold md:text-5xl">My Projects</h2>
+                                <p class="max-w-3xl mx-auto text-xl text-gray-600 dark:text-gray-900">
+                                    Explore my latest work and see how I am transforming ideas to life through code
+                                </p>
+                            </div>
+
+                            <!-- Updated grid to display all projects in a single row -->
+                            <div class="grid grid-cols-3 gap-8 mx-auto max-w-7xl">
+                                <!-- Basic Calculator -->
+                                <div class="overflow-hidden shadow-lg project-card bg-gray-50 dark:bg-gray-800 rounded-xl">
+                                    <div class="relative flex items-center justify-center h-48 overflow-hidden bg-gradient-to-br from-orange-500 to-red-600">
+                                        <div class="absolute inset-0 bg-black/20"></div>
+                                        <i class="z-10 text-6xl text-white fas fa-plus"></i>
+                                        <div class="absolute px-3 py-1 text-sm text-white rounded-full top-4 right-4 bg-white/20 backdrop-blur-sm">Basic</div>
+                                    </div>
+                                    <div class="p-6">
+                                        <h3 class="mb-3 text-xl font-bold">Basic Calculator</h3>
+                                        <p class="mb-4 leading-relaxed text-gray-600 dark:text-gray-400">A sleek and user-friendly calculator designed for effortless arithmetic operations, blending simplicity with elegance for a smooth experience.</p>
+                                    </div>
+                                    <div class="flex gap-3">
+                                     <a href="https://github.com/Jitin2102/Replit/blob/main/calculator1.py" target="_blank" class="flex-1 px-4 py-2 font-medium text-white rounded-lg btn-primary">
+                                            <i class="mr-2 fab fa-github"></i>View Code
+                                        </a>
+                                    </div>                                   
+                                </div>
+                               <!-- Tic Tac Toe Game -->
+                                <div class="overflow-hidden shadow-lg project-card bg-gray-50 dark:bg-gray-800 rounded-xl">
+                                    <div class="relative flex items-center justify-center h-48 overflow-hidden bg-gradient-to-br from-green-500 to-teal-600">
+                                        <div class="absolute inset-0 bg-black/20"></div>
+                                        <i class="z-10 text-6xl text-white fas fa-hashtag"></i>
+                                        <div class="absolute px-3 py-1 text-sm text-white rounded-full top-4 right-4 bg-white/20 backdrop-blur-sm">Game</div>
+                                    </div>
+                                    <div class="p-6">
+                                        <h3 class="mb-3 text-xl font-bold">Tic Tac Toe Game</h3>
+                                        <p class="mb-4 leading-relaxed text-gray-600 dark:text-gray-400">An engaging Tic Tac Toe game featuring a simple yet intuitive UI, designed for you to enjoy with a friend.</p>
+                                    </div>
+                                    <div class="flex gap-3">
+                                     <a href="https://github.com/Jitin2102/Replit/blob/main/tictactoe.py" target="_blank" class="flex-1 px-4 py-2 font-medium text-white rounded-lg btn-primary">
+                                            <i class="mr-2 fab fa-github"></i>View Code
+                                        </a>
+                                    </div>                                   
+
+                                </div>
+
+
+                                <!-- Resume Generator -->
+                                <div class="overflow-hidden shadow-lg project-card bg-gray-50 dark:bg-gray-800 rounded-xl">
+                                    <div class="relative flex items-center justify-center h-48 overflow-hidden bg-gradient-to-br from-blue-500 to-blue-600">
+                                        <div class="absolute inset-0 bg-black/20"></div>
+                                        <i class="z-10 text-6xl text-white fas fa-pen-nib "></i>
+                                        <div class="absolute px-3 py-1 text-sm text-white rounded-full top-4 right-4 bg-white/20 backdrop-blur-sm">Basic</div>
+                                    </div>
+                                    <div class="p-6">
+                                        <h3 class="mb-3 text-xl font-bold">Resume Generator</h3>
+                                        <p class="mb-4 leading-relaxed text-gray-600 dark:text-gray-400">Create polished resumes in minutes with this easy-to-use generator built on HTML, CSS, and JavaScript.</p>
+                                    </div>
+                                    <div class="flex gap-3">
+                                     <a href="https://github.com/Jitin2102/Resume-Generator" target="_blank" class="flex-1 px-4 py-2 font-medium text-white rounded-lg btn-primary">
+                                            <i class="mr-2 fab fa-github"></i>View Code
+                                        </a>
+                                    </div>                                   
+                                </div>
+
+                                <!-- Music Player -->
+                                <div class="overflow-hidden shadow-lg project-card bg-gray-50 dark:bg-gray-800 rounded-xl">
+                                    <div class="relative flex items-center justify-center h-48 overflow-hidden bg-gradient-to-br from-yellow-500 to-yellow-600">
+                                        <div class="absolute inset-0 bg-black/20"></div>
+                                        <i class="z-10 text-6xl text-white fas fa-music"></i>
+                                        <div class="absolute px-3 py-1 text-sm text-white rounded-full top-4 right-4 bg-white/20 backdrop-blur-sm">Featured</div>
+                                    </div>
+                                    <div class="p-6">
+                                        <h3 class="mb-3 text-xl font-bold">Music Player</h3>
+                                        <p class="mb-4 leading-relaxed text-gray-600 dark:text-gray-400">A windows-based music player built using Tkinter for the graphical user interface and Pygame for audio playback.</p>
+                                    </div>
+                                    <div class="flex gap-3">
+                                     <a href="https://github.com/Jitin2102/Music-Player/blob/main/m6.py" target="_blank" class="flex-1 px-4 py-2 font-medium text-white rounded-lg btn-primary">
+                                            <i class="mr-2 fab fa-github"></i>View Code
+                                        </a>
+                                    </div>                                   
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                </main>
+            </div>
+        </div>
+    </section>
+</body>
+</html>              
+
