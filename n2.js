@@ -523,7 +523,7 @@ class PortfolioEnhancer {
     }
 }
 function downloadResume() {
-    window.open("https://drive.google.com/file/d/1McCVhsizdiWCnU0BPolDWT0snqUwMjX0/view?usp=sharing","_blank")
+    window.open("https://drive.google.com/file/d/1EnCCqvl6tkXEl497JhgnO7laGZVTbqYN/view?usp=sharing","_blank")
 
 }
 
